@@ -4,8 +4,8 @@ import com.gabsiree.clyde.domain.dto.ClassroomDTO;
 import com.gabsiree.clyde.domain.dto.CreateClassroomRequest;
 import com.gabsiree.clyde.domain.model.Classroom;
 import com.gabsiree.clyde.domain.model.User;
-import com.gabsiree.clyde.domain.repository.ClassroomRepository;
-import com.gabsiree.clyde.domain.repository.UserRepository;
+import com.gabsiree.clyde.domain.repository.authentication.UserRepository;
+import com.gabsiree.clyde.domain.repository.teacher.TeacherRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 public class TeacherService {
-    private final ClassroomRepository classroomRepository;
+    private final TeacherRepository teacherRepository;
     private final UserRepository userRepository;
 
     public ClassroomDTO createClassroom(CreateClassroomRequest request) {
@@ -33,7 +33,7 @@ public class TeacherService {
                 .teacher(teacher)
                 .build();
 
-        Classroom saved = classroomRepository.save(classroom);
+        Classroom saved = teacherRepository.save(classroom);
 
         return ClassroomDTO.builder()
                 .id(saved.getId())
@@ -49,7 +49,7 @@ public class TeacherService {
         User teacher = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
-        return classroomRepository.findByTeacher(teacher)
+        return teacherRepository.findByTeacher(teacher)
                 .stream()
                 .map(classroom -> ClassroomDTO.builder()
                         .id(classroom.getId())

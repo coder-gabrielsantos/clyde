@@ -1,7 +1,7 @@
 package com.gabsiree.clyde.infrastructure.security;
 
 import com.gabsiree.clyde.domain.model.User;
-import com.gabsiree.clyde.domain.repository.UserRepository;
+import com.gabsiree.clyde.domain.repository.authentication.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

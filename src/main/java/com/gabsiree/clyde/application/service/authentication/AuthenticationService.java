@@ -4,7 +4,7 @@ import com.gabsiree.clyde.domain.dto.AuthenticationRequest;
 import com.gabsiree.clyde.domain.dto.AuthenticationResponse;
 import com.gabsiree.clyde.domain.dto.CreateUserRequest;
 import com.gabsiree.clyde.domain.model.User;
-import com.gabsiree.clyde.domain.repository.UserRepository;
+import com.gabsiree.clyde.domain.repository.authentication.UserRepository;
 import com.gabsiree.clyde.infrastructure.security.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;

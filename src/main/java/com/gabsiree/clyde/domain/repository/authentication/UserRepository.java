@@ -1,4 +1,4 @@
-package com.gabsiree.clyde.domain.repository;
+package com.gabsiree.clyde.domain.repository.authentication;
 
 import com.gabsiree.clyde.domain.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
