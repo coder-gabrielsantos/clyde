@@ -19,7 +19,7 @@ Clyde is an educational platform designed to streamline interaction between teac
 ## 🛠️ Tech Stack
 
 ### Backend
-- **Java 24** + **Spring Boot**
+- **Java 21** + **Spring Boot**
 - Spring Security with **JWT Authentication**
 - Spring Data JPA with **MySQL**
 - DTO mapping and clean architecture structure
