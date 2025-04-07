@@ -1,4 +1,4 @@
-# Clyde – Personalized Educational Platform
+# Clyde – Educational Platform
 
 Clyde is an educational platform designed to streamline interaction between teachers and students, built with modern, secure, and scalable technologies.
 
