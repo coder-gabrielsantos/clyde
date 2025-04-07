@@ -79,7 +79,7 @@ Endpoints are protected based on user roles (`STUDENT`, `TEACHER`).
 
 - [x] Define core architecture
 - [x] Setup project with Git and Maven
-- [ ] Implement authentication system
+- [x] Implement authentication system
 - [ ] Create classroom module
 - [ ] Enable file upload for materials and submissions
 - [ ] Build full mobile app in React Native
