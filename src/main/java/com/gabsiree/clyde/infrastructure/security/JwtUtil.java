@@ -13,7 +13,7 @@ import java.util.function.Function;
 @Component
 public class JwtUtil {
 
-    private final String SECRET = "ilsiree";
+    private final String SECRET = "d34ba0e2f89342b19d1a6c8e30f6e51f6e5a21ab8e3bd9cb42074e38edec7a54";
 
     private final long EXPIRATION_TIME = 1000 * 60 * 60 * 10; // 10 hours
 
