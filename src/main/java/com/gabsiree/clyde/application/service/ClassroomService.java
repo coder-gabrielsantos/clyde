@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -41,5 +42,22 @@ public class ClassroomService {
                 .code(saved.getCode())
                 .teacher(saved.getTeacher().getName())
                 .build();
+    }
+
+    public List<ClassroomDTO> listOwnedClassrooms() {
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+
+        User teacher = userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        return classroomRepository.findByTeacher(teacher)
+                .stream()
+                .map(classroom -> ClassroomDTO.builder()
+                        .id(classroom.getId())
+                        .name(classroom.getName())
+                        .code(classroom.getCode())
+                        .teacher(teacher.getName())
+                        .build())
+                .toList();
     }
 }

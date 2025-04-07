@@ -5,10 +5,9 @@ import com.gabsiree.clyde.domain.dto.ClassroomDTO;
 import com.gabsiree.clyde.domain.dto.CreateClassroomRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/classrooms")
@@ -21,5 +20,11 @@ public class ClassroomController {
     public ResponseEntity<ClassroomDTO> create(@RequestBody CreateClassroomRequest request) {
         ClassroomDTO dto = classroomService.createClassroom(request);
         return ResponseEntity.ok(dto);
+    }
+
+    @GetMapping("/owned")
+    public ResponseEntity<List<ClassroomDTO>> listOwned() {
+        List<ClassroomDTO> classrooms = classroomService.listOwnedClassrooms();
+        return ResponseEntity.ok(classrooms);
     }
 }
