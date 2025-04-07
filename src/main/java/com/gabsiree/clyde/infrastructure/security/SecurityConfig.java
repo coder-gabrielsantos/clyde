@@ -29,11 +29,11 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/**").permitAll()
-                        .requestMatchers(HttpMethod.GET, "teacher/classrooms/own").hasRole("TEACHER")
-                        .requestMatchers(HttpMethod.POST, "teacher/classrooms/new").hasRole("TEACHER")
+                        .requestMatchers("/authentication/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/teacher/classrooms/own").hasRole("TEACHER")
+                        .requestMatchers(HttpMethod.POST, "/teacher/classrooms/new").hasRole("TEACHER")
                         .requestMatchers(HttpMethod.GET, "/student/classrooms/list").hasRole("STUDENT")
-                        .requestMatchers(HttpMethod.POST, "student/classrooms/join").hasRole("STUDENT")
+                        .requestMatchers(HttpMethod.POST, "/student/classrooms/join").hasRole("STUDENT")
                         .anyRequest().authenticated()
                 )
                 .exceptionHandling(ex -> ex
