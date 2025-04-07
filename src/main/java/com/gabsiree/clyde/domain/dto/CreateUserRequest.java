@@ -1,6 +1,6 @@
 package com.gabsiree.clyde.domain.dto;
 
-import com.gabsiree.clyde.domain.model._Role;
+import com.gabsiree.clyde.domain.model.Role;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,5 +11,5 @@ public class CreateUserRequest {
     private String name;
     private String email;
     private String password;
-    private _Role role;
+    private Role role;
 }
