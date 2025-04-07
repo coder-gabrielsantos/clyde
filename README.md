@@ -1,4 +1,4 @@
-# Clyde – Personalized Educational Platform
+# Clyde – Educational Platform
 
 Clyde is an educational platform designed to streamline interaction between teachers and students, built with modern, secure, and scalable technologies.
 
@@ -19,7 +19,7 @@ Clyde is an educational platform designed to streamline interaction between teac
 ## 🛠️ Tech Stack
 
 ### Backend
-- **Java 24** + **Spring Boot**
+- **Java 21** + **Spring Boot**
 - Spring Security with **JWT Authentication**
 - Spring Data JPA with **MySQL**
 - DTO mapping and clean architecture structure
@@ -79,7 +79,7 @@ Endpoints are protected based on user roles (`STUDENT`, `TEACHER`).
 
 - [x] Define core architecture
 - [x] Setup project with Git and Maven
-- [ ] Implement authentication system
+- [x] Implement authentication system
 - [ ] Create classroom module
 - [ ] Enable file upload for materials and submissions
 - [ ] Build full mobile app in React Native
