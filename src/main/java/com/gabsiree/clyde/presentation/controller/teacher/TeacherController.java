@@ -18,14 +18,12 @@ public class TeacherController {
     @PostMapping("new")
     public ResponseEntity<ClassroomDTO> createClassroom(@RequestBody CreateClassroomRequest request) {
         ClassroomDTO dto = classroomService.createClassroom(request);
-
         return ResponseEntity.ok(dto);
     }
 
     @GetMapping("/own")
     public ResponseEntity<List<ClassroomDTO>> listOwnedClassrooms() {
         List<ClassroomDTO> classrooms = classroomService.listOwnedClassrooms();
-
         return ResponseEntity.ok(classrooms);
     }
 }

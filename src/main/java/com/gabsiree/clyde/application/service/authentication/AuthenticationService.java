@@ -1,4 +1,4 @@
-package com.gabsiree.clyde.application.service.auth;
+package com.gabsiree.clyde.application.service.authentication;
 
 import com.gabsiree.clyde.domain.dto.AuthenticationRequest;
 import com.gabsiree.clyde.domain.dto.AuthenticationResponse;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class AuthService {
+public class AuthenticationService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;

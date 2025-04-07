@@ -16,7 +16,6 @@ public class StudentController {
     @PostMapping("/join")
     public ResponseEntity<?> joinClassroom(@RequestBody JoinClassroomRequest request) {
         classroomService.joinClassroom(request);
-
         return ResponseEntity.ok("Successfully joined classroom");
     }
 }
