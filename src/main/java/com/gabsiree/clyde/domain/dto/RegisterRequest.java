@@ -1,6 +1,6 @@
 package com.gabsiree.clyde.domain.dto;
 
-import com.gabsiree.clyde.domain.model.Role;
+import com.gabsiree.clyde.domain.model._Role;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,5 +11,5 @@ public class RegisterRequest {
     private String name;
     private String email;
     private String password;
-    private Role role;
+    private _Role role;
 }
