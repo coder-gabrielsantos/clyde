@@ -16,19 +16,11 @@ public class AuthenticationController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody AuthenticationRequest request) {
-
-        System.out.println("🟢 Entrou na rota /authentication/login");
-        System.out.println("Email: " + request.getEmail());
-
         return ResponseEntity.ok(authenticationService.login(request));
     }
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody CreateUserRequest request) {
-
-        System.out.println("🚀 Entrou na rota /authentication/register");
-        System.out.println("📨 Payload recebido: " + request);
-
         return ResponseEntity.ok(authenticationService.register(request));
     }
 }
