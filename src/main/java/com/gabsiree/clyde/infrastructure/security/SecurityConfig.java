@@ -32,6 +32,7 @@ public class SecurityConfig {
                         .requestMatchers("/auth/**").permitAll()
                         .requestMatchers(org.springframework.http.HttpMethod.POST, "/classrooms").hasRole("TEACHER")
                         .requestMatchers(HttpMethod.GET, "/classrooms/owned").hasRole("TEACHER")
+                        .requestMatchers(HttpMethod.POST, "/classrooms/join").hasRole("STUDENT")
                         .anyRequest().authenticated()
                 )
                 .exceptionHandling(ex -> ex

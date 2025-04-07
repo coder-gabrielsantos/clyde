@@ -2,6 +2,7 @@ package com.gabsiree.clyde.application.service;
 
 import com.gabsiree.clyde.domain.dto.ClassroomDTO;
 import com.gabsiree.clyde.domain.dto.CreateClassroomRequest;
+import com.gabsiree.clyde.domain.dto.JoinClassroomRequest;
 import com.gabsiree.clyde.domain.model.Classroom;
 import com.gabsiree.clyde.domain.model.User;
 import com.gabsiree.clyde.domain.repository.ClassroomRepository;
@@ -59,5 +60,22 @@ public class ClassroomService {
                         .teacher(teacher.getName())
                         .build())
                 .toList();
+    }
+
+    public void joinClassroom(JoinClassroomRequest request) {
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+
+        User student = userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        Classroom classroom = classroomRepository.findByCode(request.getCode())
+                .orElseThrow(() -> new RuntimeException("Classroom not found"));
+
+        if (classroom.getStudents().contains(student)) {
+            throw new RuntimeException("User is already enrolled in this classroom.");
+        }
+
+        classroom.getStudents().add(student);
+        classroomRepository.save(classroom);
     }
 }
