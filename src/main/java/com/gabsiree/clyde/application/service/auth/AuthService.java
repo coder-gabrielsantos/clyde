@@ -1,4 +1,4 @@
-package com.gabsiree.clyde.application.service;
+package com.gabsiree.clyde.application.service.auth;
 
 import com.gabsiree.clyde.domain.dto.AuthenticationRequest;
 import com.gabsiree.clyde.domain.dto.AuthenticationResponse;
@@ -21,6 +21,16 @@ public class AuthService {
     private final JwtUtil jwtUtil;
     private final AuthenticationManager authManager;
 
+    public AuthenticationResponse login(AuthenticationRequest request) {
+        var auth = new UsernamePasswordAuthenticationToken(
+                request.getEmail(), request.getPassword()
+        );
+        authManager.authenticate(auth);
+
+        String token = jwtUtil.generateToken(request.getEmail());
+        return new AuthenticationResponse(token);
+    }
+
     public AuthenticationResponse register(CreateUserRequest request) {
         if (userRepository.findByEmail(request.getEmail()).isPresent()) {
             throw new RuntimeException("Email already in use");
@@ -36,16 +46,6 @@ public class AuthService {
         userRepository.save(user);
 
         String token = jwtUtil.generateToken(user.getEmail());
-        return new AuthenticationResponse(token);
-    }
-
-    public AuthenticationResponse login(AuthenticationRequest request) {
-        var auth = new UsernamePasswordAuthenticationToken(
-                request.getEmail(), request.getPassword()
-        );
-        authManager.authenticate(auth);
-
-        String token = jwtUtil.generateToken(request.getEmail());
         return new AuthenticationResponse(token);
     }
 }

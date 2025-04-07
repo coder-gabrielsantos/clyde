@@ -30,9 +30,9 @@ public class SecurityConfig {
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/**").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/classrooms").hasRole("TEACHER")
-                        .requestMatchers(HttpMethod.GET, "/classrooms/owned").hasRole("TEACHER")
-                        .requestMatchers(HttpMethod.POST, "/classrooms/join").hasRole("STUDENT")
+                        .requestMatchers(HttpMethod.GET, "teacher/classrooms/own").hasRole("TEACHER")
+                        .requestMatchers(HttpMethod.POST, "teacher/classrooms/new").hasRole("TEACHER")
+                        .requestMatchers(HttpMethod.POST, "student/classrooms/join").hasRole("STUDENT")
                         .anyRequest().authenticated()
                 )
                 .exceptionHandling(ex -> ex
