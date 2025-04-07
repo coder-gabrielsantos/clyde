@@ -29,6 +29,7 @@ public class SecurityConfig {
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/**").permitAll()
+                        .requestMatchers(org.springframework.http.HttpMethod.POST, "/classrooms").hasRole("TEACHER")
                         .anyRequest().authenticated()
                 )
                 .exceptionHandling(ex -> ex
