@@ -27,7 +27,10 @@ public class AuthenticationService {
         );
         authManager.authenticate(auth);
 
-        String token = jwtUtil.generateToken(request.getEmail());
+        User user = userRepository.findByEmail(request.getEmail())
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        String token = jwtUtil.generateToken(user);
         return new AuthenticationResponse(token);
     }
 
@@ -37,7 +40,6 @@ public class AuthenticationService {
         }
 
         User user = new User();
-
         user.setName(request.getName());
         user.setEmail(request.getEmail());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
@@ -45,7 +47,7 @@ public class AuthenticationService {
 
         userRepository.save(user);
 
-        String token = jwtUtil.generateToken(user.getEmail());
+        String token = jwtUtil.generateToken(user);
         return new AuthenticationResponse(token);
     }
 }
